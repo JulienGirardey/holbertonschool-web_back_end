@@ -4,9 +4,10 @@ you’ve written and write an async routine called
 wait_n that takes in 2 int arguments
 """
 wait_random = __import__('0-basic_async_syntax').wait_random
+from typing import List
 
 
-async def wait_n(n: int, max_delay: int) -> list[float]:
+async def wait_n(n: int, max_delay: int) -> List[float]:
     """
     Spawns wait_random n times with the specified max_delay and returns the list of delays.
 
