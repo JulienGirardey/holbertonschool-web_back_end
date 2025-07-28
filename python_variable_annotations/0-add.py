@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
-This module provides a function that takes two floats as arguments and returns their sum as a float.
+This module provides a function that takes two floats as arguments
+and returns their sum as a float.
 """
 
 
