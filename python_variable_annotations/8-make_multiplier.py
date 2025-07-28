@@ -4,6 +4,7 @@ This module provides a function to create multiplier functions.
 """
 from typing import Callable
 
+
 def make_multiplier(multiplier: float) -> Callable[[float], float]:
     """
     Returns a function that multiplies its input by the given multiplier.

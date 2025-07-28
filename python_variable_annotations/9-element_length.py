@@ -4,6 +4,7 @@ This module provides a function to compute the length of elements in an iterable
 """
 from typing import Sequence, Iterable, List, Tuple
 
+
 def element_length(lst: Iterable[Sequence]) -> List[Tuple[Sequence, int]]:
     """
     Returns a list of tuples containing each element and its length from the given iterable.
