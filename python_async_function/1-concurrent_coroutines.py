@@ -5,6 +5,7 @@ wait_n that takes in 2 int arguments
 """
 wait_random = __import__('0-basic_async_syntax').wait_random
 from typing import List
+import asyncio
 
 
 async def wait_n(n: int, max_delay: int) -> List[float]:
@@ -18,5 +19,6 @@ async def wait_n(n: int, max_delay: int) -> List[float]:
     Returns:
         List[float]: List of delays.
     """
-    list_delay = [await wait_random(max_delay) for _ in range(n)]
+    tasks = [wait_random(max_delay) for _ in range(n)]
+    list_delay = await asyncio.gather(*tasks)
     return list_delay
