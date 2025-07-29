@@ -10,7 +10,8 @@ import asyncio
 
 async def wait_n(n: int, max_delay: int) -> List[float]:
     """
-    Spawns wait_random n times with the specified max_delay and returns the list of delays.
+    Spawns wait_random n times with the specified
+    max_delay and returns the list of delays.
 
     Args:
         n (int): Number of times to spawn wait_random.

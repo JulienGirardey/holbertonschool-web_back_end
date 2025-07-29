@@ -9,7 +9,8 @@ import asyncio
 
 async def wait_random(max_delay: int = 10) -> float:
     """
-    Waits for a random delay between 0 and max_delay seconds and returns the delay.
+    Waits for a random delay between 0 and max_delay
+    seconds and returns the delay.
 
     Args:
         max_delay (int): The maximum delay in seconds.
