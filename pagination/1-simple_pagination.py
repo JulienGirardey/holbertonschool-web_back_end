@@ -32,4 +32,8 @@ class Server:
             0, "Page size must be a positive integer."
 
         index = index_range(page, page_size)
-        return self.dataset()[index[0]:index[1]]
+        result = self.dataset()[index[0]:index[1]]
+        if len(index) != 2:
+            return []
+        else:
+            return result
