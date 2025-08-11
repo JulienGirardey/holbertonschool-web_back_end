@@ -46,19 +46,23 @@ class Server:
         that returns a dictionary
         """
         data = self.dataset()
-        if len(data) >= page:
+        total_pages = math.ceil(len(data) / page_size)
+
+        if page < total_pages:
             next_page = page + 1
         else:
             next_page = None
-        if page >= len(data):
+
+        if page > 1:
             prev_page = page - 1
         else:
             prev_page = None
+
         return {
             "page_size": page_size,
             "page": page,
             "data": self.get_page(page, page_size),
             "next_page": next_page,
             "prev_page": prev_page,
-            "total_page": math.ceil(len(data) / page_size)
+            "total_page": total_pages
         }
