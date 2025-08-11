@@ -59,7 +59,7 @@ class Server:
             prev_page = None
 
         return {
-            "page_size": page_size,
+            "page_size": len(data),
             "page": page,
             "data": self.get_page(page, page_size),
             "next_page": next_page,
