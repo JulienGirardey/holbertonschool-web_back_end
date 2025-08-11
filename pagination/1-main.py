@@ -22,6 +22,11 @@ try:
 except AssertionError:
     print("AssertionError raised when page and/or page_size are not ints")
 
+try:
+    should_err = server.get_page(None, None)
+except AssertionError:
+    print("AssertionError raised with None values")
+
 
 print(server.get_page(1, 3))
 print(server.get_page(3, 2))
