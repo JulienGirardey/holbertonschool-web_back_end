@@ -44,9 +44,11 @@ class Server:
         return a dictionary
         """
         dataset = self.indexed_dataset()
-        next_index = index + page_size
         assert 0 <= index < len(dataset)
-        data = [dataset[index] for index in range(page_size)]
+
+        next_index = index + page_size
+        data = [dataset[index] for index in
+                range(page_size) if index in dataset]
 
         return {
             'index': index,
