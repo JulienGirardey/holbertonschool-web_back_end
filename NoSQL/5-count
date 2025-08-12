@@ -1,2 +1,2 @@
 // that displays the number of documents in the collection school
-db.school.estimatedDocumentCount()
+db.school.find().count()
