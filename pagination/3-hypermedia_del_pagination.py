@@ -48,7 +48,7 @@ class Server:
 
         next_index = index + page_size
         data = [dataset[index] for index in
-                range(page_size) if index in dataset]
+                range(index, next_index) if index in dataset]
 
         return {
             'index': index,
