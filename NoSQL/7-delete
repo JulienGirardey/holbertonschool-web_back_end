@@ -1,2 +1,2 @@
 // that deletes all documents with name="Holberton school" in the collection school
-db.school.deleteOne({name: "Holberton school"})
+db.school.remove({name: "Holberton school"})
