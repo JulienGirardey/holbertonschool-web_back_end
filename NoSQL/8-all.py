@@ -11,4 +11,4 @@ def list_all(mongo_collection):
     if mongo_collection is None:
         return []
     else:
-        return mongo_collection.find()
+        return list(mongo_collection.find())
