@@ -14,7 +14,7 @@ if __name__ == "__main__":
     method = ["GET", "POST", "PUT", "PATCH", "DELETE"]
 
     print(nb_documents, " logs")
-    print("methods:")
+    print("Methods:")
     count = 0
     for i in method:
         school = stats.count_documents({'method': i})
