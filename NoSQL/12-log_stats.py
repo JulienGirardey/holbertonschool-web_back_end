@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-this file is a program, that provides some
+This file is a program that provides some
 stats about Nginx logs stored in MongoDB
 """
 from pymongo import MongoClient
