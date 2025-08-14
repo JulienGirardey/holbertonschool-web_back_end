@@ -19,5 +19,5 @@ if __name__ == "__main__":
     for i in method:
         school = stats.count_documents({'method': i})
         count += school
-        print("\tmethod {}: {}".format(i, school))
+        print("    method {}: {}".format(i, school))
     print("{} status check".format(stats.count_documents({'path': '/status'})))
