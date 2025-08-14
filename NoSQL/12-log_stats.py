@@ -17,7 +17,7 @@ if __name__ == "__main__":
     print("Methods:")
     for method in methods:
         count = stats.count_documents({'method': method})
-        print("    method {}: {}".format(method, count))
+        print("\tmethod {}: {}".format(method, count))
 
     status_check = stats.count_documents({'method': 'GET', 'path': '/status'})
     print("{} status check".format(status_check))
