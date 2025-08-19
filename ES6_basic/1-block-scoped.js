@@ -3,7 +3,7 @@ export default function taskBlock(trueOrFalse) {
   const task2 = true;
 
   if (trueOrFalse) {
-	// Intentionally left blank for block scope demonstation
+    // empty block
   }
 
   return [task, task2];
