@@ -1,11 +1,5 @@
 export default function cleanSet(set, startString) {
-	if (typeof startString !== "string") {
-		throw new TypeError("the last argument must be a String");
-	}
-	if (!(set instanceof Set)) {
-		throw new TypeError("the first argument must be a Set");
-	}
-	if (startString.length === 0) {
+	if (typeof startString !== "string" || (!(set instanceof Set)) || startString.length === 0) {
 		return "";
 	}
 	return [...set]
