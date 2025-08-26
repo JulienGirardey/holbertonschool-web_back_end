@@ -1,5 +1,5 @@
 export default function cleanSet(set, startString) {
-	if (typeof startString !== "string" || (!(set instanceof Set)) || startString.length === 0) {
+	if (typeof startString !== "string" || !(set instanceof Set) || startString.length === 0) {
 		return "";
 	}
 	return [...set]
