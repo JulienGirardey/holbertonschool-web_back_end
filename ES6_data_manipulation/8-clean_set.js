@@ -5,7 +5,7 @@ export default function cleanSet(set, startString) {
 	if (!(set instanceof Set)) {
 		throw new TypeError("the first argument must be a Set");
 	}
-	if (!startString) {
+	if (startString.length === 0) {
 		return "";
 	}
 	return [...set]
