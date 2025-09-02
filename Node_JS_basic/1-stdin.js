@@ -5,13 +5,13 @@
  * display 'This important software is now closing'
  **/
 process.stdin.setDefaultEncoding('utf-8');
-console.log("Welcome to Holberton School, what is your name?");
-process.stdin.on('readable', function() {
+console.log('Welcome to Holberton School, what is your name?');
+process.stdin.on('readable', () => {
 	var chunk = process.stdin.read();
 	if (chunk !== null) {
-		process.stdout.write('Your name is: ' + chunk);
+		process.stdout.write(`Your name is: ${chunk}`);
 	}
 });
-process.stdin.on('end', function() {
+process.stdin.on('end', () => {
 	process.stdout.write('This important software is now closing\n');
 });
