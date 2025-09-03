@@ -1,5 +1,7 @@
 const http = require('node:http');
 const countStudents = require('./3-read_file_async');
+const { count } = require('node:console');
+const { response } = require('express');
 
 const app = http.createServer(async (request, response) => {
   const { url } = request;
@@ -14,14 +16,19 @@ const app = http.createServer(async (request, response) => {
     const originalLog = console.log;
     console.log = (msg) => { logs += `${msg}\n`; };
 
-    try {
-      await countStudents(dbName);
-      console.log = originalLog;
-      response.end(`This is the list of our students\n${logs.trim()}`);
-    } catch {
-      console.log = originalLog;
-      response.end(`This is the list of our students\nCannot load the database`);
-    }
+    countStudents(dbName)
+      .then(() => {
+        console.log = originalLog;
+
+        response.write(logs);
+        response.end();
+      })
+      .catch(() => {
+        console.log = originalLog;
+
+        response.write('Cannot load the database');
+        response.end();
+      });
   } else {
     response.end('Not found\n');
   }
