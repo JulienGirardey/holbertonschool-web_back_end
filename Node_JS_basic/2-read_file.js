@@ -11,7 +11,7 @@ function countStudents(path) {
     console.log(`Number of students in CS: ${cs.length}. List: ${cs.map(line => line.split(',')[0]).join(', ')}`);
 
     const swe = students.filter(line => line.split(',')[3] === 'SWE');
-    console.log(`Number of students in SWE: ${swe.length}. List: ${swe.map(line => name = line.split(',')[0]).join(', ')}`);
+    console.log(`Number of students in SWE: ${swe.length}. List: ${swe.map(line => line.split(',')[0]).join(', ')}`);
 
   } catch {
     throw new Error("Cannot load the database");

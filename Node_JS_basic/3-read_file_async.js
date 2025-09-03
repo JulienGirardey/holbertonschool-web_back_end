@@ -13,7 +13,7 @@ async function countStudents(path) {
       result += `Number of students in CS: ${cs.length}. List: ${cs.map(line => line.split(',')[0]).join(', ')}\n`;
 
       const swe = students.filter(line => line.split(',')[3] === 'SWE');
-      result += `Number of students in SWE: ${swe.length}. List: ${swe.map(line => name = line.split(',')[0]).join(', ')}`;
+      result += `Number of students in SWE: ${swe.length}. List: ${swe.map(line => line.split(',')[0]).join(', ')}`;
 
       console.log(result);
       resolve(result);
