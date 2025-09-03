@@ -7,7 +7,7 @@ function countStudents(path) {
     const students = lines.slice(1);
     const validStudents = students.filter((line) => line.trim() !== '');
 
-    console.log(`Number of students: ${students.length}`);
+    console.log(`Number of students: ${validStudents.length}`);
 
     const fields = {};
     validStudents.map(line => {
