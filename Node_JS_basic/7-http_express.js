@@ -13,9 +13,7 @@ app.get('/students', (req, res) => {
 
   res.writeHead(200, { 'Content-Type': 'text/plain' });
 
-  if (url === '/') {
-    res.end('Hello Holberton School!');
-  } else if (url === '/students') {
+  if (url === '/students') {
     const dbName = process.argv[2] || '';
     let logs = '';
     res.write('This is the list of our students\n');
