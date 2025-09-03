@@ -7,6 +7,7 @@ function countStudents(path) {
     const students = lines.slice(1);
 
     console.log(`Number of students: ${students.length}`);
+
     const cs = students.filter(line => line.split(',')[3] === 'CS');
     console.log(`Number of students in CS: ${cs.length}. List: ${cs.map(line => line.split(',')[0]).join(', ')}`);
 
