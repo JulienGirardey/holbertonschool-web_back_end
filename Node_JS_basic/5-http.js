@@ -1,7 +1,5 @@
-const http = require('node:http');
+const http = require('http');
 const countStudents = require('./3-read_file_async');
-const { count } = require('node:console');
-const { response } = require('express');
 
 const app = http.createServer(async (request, response) => {
   const { url } = request;
@@ -9,7 +7,7 @@ const app = http.createServer(async (request, response) => {
   response.writeHead(200, { 'Content-Type': 'text/plain' });
 
   if (url === '/') {
-    response.end('Hello Holberton School!\n');
+    response.end('Hello Holberton School!');
   } else if (url === '/students') {
     const dbName = process.argv[2] || '';
     let logs = '';
@@ -30,7 +28,7 @@ const app = http.createServer(async (request, response) => {
         response.end();
       });
   } else {
-    response.end('Not found\n');
+    response.end('Hello Holberton School!');
   }
 });
 
