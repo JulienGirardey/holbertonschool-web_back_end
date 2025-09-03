@@ -3,8 +3,8 @@ const app = express();
 const port = 1245;
 
 
-app.get('/', (res) => {
-  res.end('Hello Holberton School!');
+app.get('/', (req, res) => {
+	res.end('Hello Holberton School!');
 });
 
 app.listen(port);
