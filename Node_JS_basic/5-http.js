@@ -11,6 +11,7 @@ const app = http.createServer(async (request, response) => {
   } else if (url === '/students') {
     const dbName = process.argv[2] || '';
     let logs = '';
+    response.write('This is the list of our students\n');
     const originalLog = console.log;
     console.log = (msg) => { logs += `${msg}\n`; };
 
