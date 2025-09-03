@@ -31,5 +31,4 @@ async function countStudents(path) {
     .catch(() => Promise.reject(new Error('Cannot load the database')));
 }
 
-
 module.exports = countStudents;
