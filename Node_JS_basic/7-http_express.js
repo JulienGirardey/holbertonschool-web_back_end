@@ -1,5 +1,6 @@
-const express = require('express');
 const countStudents = require('./3-read_file_async');
+
+const express = require('express');
 
 const app = express();
 
@@ -7,23 +8,35 @@ app.get('/', (req, res) => {
   res.send('Hello Holberton School!');
 });
 
-app.get('/students', async (req, res) => {
-  const dbName = process.argv[2] || '';
-  let logs = '';
+app.get('/students', (req, res) => {
+  const { url } = req;
 
-  // Capture console.log
-  const originalLog = console.log;
-  console.log = (msg) => { logs += `${msg}\n`; };
+  res.writeHead(200, { 'Content-Type': 'text/plain' });
 
-  try {
-    await countStudents(dbName);
-    console.log = originalLog;
-    res.send(`This is the list of our students\n${logs.trim()}`);
-  } catch {
-    console.log = originalLog;
-    res.send('This is the list of our students\nCannot load the database');
+  if (url === '/students') {
+    const dbName = process.argv[2] || '';
+    let logs = '';
+    res.write('This is the list of our students\n');
+    const originalLog = console.log;
+    console.log = (msg) => { logs += `${msg}\n`; };
+
+    countStudents(dbName)
+      .then(() => {
+        console.log = originalLog;
+
+        res.write(logs);
+        res.send();
+      })
+      .catch(() => {
+        console.log = originalLog;
+
+        res.write('Cannot load the database');
+        res.end();
+      });
+  } else {
+    res.send('Hello Holberton School!');
   }
-});
+})
 
 app.listen(1245);
 
