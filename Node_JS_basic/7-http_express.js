@@ -9,33 +9,27 @@ app.get('/', (req, res) => {
 });
 
 app.get('/students', (req, res) => {
-  const { url } = req;
+  const dbName = process.argv[2] || '';
+  let Text = 'This is the list of our students\n';
 
-  res.writeHead(200, { 'Content-Type': 'text/plain' });
+  let logs = '';
+  const originalLog = console.log;
 
-  if (url === '/students') {
-    const dbName = process.argv[2] || '';
-    let logs = '';
-    res.write('This is the list of our students\n');
-    const originalLog = console.log;
-    console.log = (msg) => { logs += `${msg}\n`; };
+  console.log = (msg) => { logs += `${msg}\n`; };
 
-    countStudents(dbName)
-      .then(() => {
-        console.log = originalLog;
+  countStudents(dbName)
+    .then(() => {
+      console.log = originalLog;
 
-        res.write(logs);
-        res.send();
-      })
-      .catch(() => {
-        console.log = originalLog;
+      Text += logs;
+      res.send(Text);
+    })
+    .catch(() => {
+      console.log = originalLog;
 
-        res.write('Cannot load the database');
-        res.end();
-      });
-  } else {
-    res.send('Hello Holberton School!');
-  }
+      Text += 'Cannot load the database';
+      res.end(Text);
+    });
 })
 
 app.listen(1245);
