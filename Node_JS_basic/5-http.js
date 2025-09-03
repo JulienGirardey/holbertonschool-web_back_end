@@ -1,6 +1,5 @@
 const http = require('node:http');
 const countStudents = require('./3-read_file_async');
-const { count } = require('node:console');
 
 const app = http.createServer(async (request, response) => {
   const { url } = request;
@@ -13,7 +12,7 @@ const app = http.createServer(async (request, response) => {
     const dbName = process.argv[2] || '';
     let logs = '';
     const originalLog = console.log;
-    console.log = (msg) => { logs += `${msg}\n`;};
+    console.log = (msg) => { logs += `${msg}\n`; };
 
     try {
       await countStudents(dbName);
