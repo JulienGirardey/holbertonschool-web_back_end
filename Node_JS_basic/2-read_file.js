@@ -9,10 +9,10 @@ function countStudents(path) {
     console.log(`Number of students: ${students.length}`);
 
     const fields = {};
-    students.forEach(line => {
+    students.map(line => {
       const cols = line.split(',');
-      const field = cols[3];
-      const firstName = cols[0];
+      const field = cols[cols.length - 1].trim();
+      const firstName = cols[0].trim();
       if (!fields[field]) fields[field] = [];
       fields[field].push(firstName);
     });
