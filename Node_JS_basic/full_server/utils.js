@@ -17,7 +17,6 @@ async function readDatabase(path) {
       fields[field].push(firstName);
     });
 
-    console.log('DEBUG - fields retournés:', fields); // Ajoute ça temporairement
     return fields;
   } catch (error) {
     throw new Error('Cannot load the database');
