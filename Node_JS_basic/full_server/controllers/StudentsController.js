@@ -32,9 +32,6 @@ export default class StudentsController {
     readDatabase(dbPath)
       .then((fields) => {
         const students = fields[major];
-        if (!students) {
-          return response.status(500).send('Cannot load the database');
-        }
         response.status(200).send(`List: ${students.join(', ')}`);
       })
       .catch(() => {
