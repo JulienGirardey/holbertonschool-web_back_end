@@ -2,18 +2,16 @@ import readDatabase from '../utils.js';
 
 export default class StudentsController {
   static getAllStudents(request, response) {
-    const dbPath = process.argv[2];
+    const dbPath = process.argv[2] || './database.csv';
 
     readDatabase(dbPath)
       .then((fields) => {
         let output = 'This is the list of our students';
-
-        Object.keys(fields)
-          .sort()
-          .forEach(field => {
-            const students = fields[field];
-            output += `\nNumber of students in ${field}: ${students.length}. List: ${students.join(', ')}`;
-          });
+        
+        Object.keys(fields).sort().forEach(field => {
+          const students = fields[field];
+          output += `\nNumber of students in ${field}: ${students.length}. List: ${students.join(', ')}`;
+        });
 
         response.status(200).send(output);
       })
@@ -29,7 +27,7 @@ export default class StudentsController {
       return response.status(500).send('Major parameter must be CS or SWE');
     }
 
-    const dbPath = process.argv[2];
+    const dbPath = process.argv[2] || './database.csv';
 
     readDatabase(dbPath)
       .then((fields) => {
