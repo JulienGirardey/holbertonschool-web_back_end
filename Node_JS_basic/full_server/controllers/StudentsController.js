@@ -24,17 +24,17 @@ export default class StudentsController {
 
   static getAllStudentsByMajor(request, response) {
     const major = request.params.major;
-    
+
     if (!major || (major !== 'CS' && major !== 'SWE')) {
       return response.status(500).send('Major parameter must be CS or SWE');
     }
 
     const dbPath = process.argv[2];
-    
+
     readDatabase(dbPath)
       .then((fields) => {
         const students = fields[major];
-        
+
         response.status(200).send(`List: ${students.join(', ')}`);
       })
       .catch(() => {
