@@ -7,7 +7,7 @@ export default class StudentsController {
     readDatabase(dbPath)
       .then((fields) => {
         let output = 'This is the list of our students';
-        
+
         Object.keys(fields).sort().forEach((field) => {
           const students = fields[field];
           output += `\nNumber of students in ${field}: ${students.length}. List: ${students.join(', ')}`;
@@ -21,10 +21,11 @@ export default class StudentsController {
   }
 
   static getAllStudentsByMajor(request, response) {
-    const major = request.params.major;
+    const { major } = request.params;
 
     if (major !== 'CS' && major !== 'SWE') {
-      return response.status(500).send('Major parameter must be CS or SWE');
+      response.status(500).send('Major parameter must be CS or SWE');
+      return;
     }
 
     const dbPath = process.argv[2] || './database.csv';
