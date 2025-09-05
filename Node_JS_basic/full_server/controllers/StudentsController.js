@@ -9,7 +9,7 @@ export default class StudentsController {
         let output = 'This is the list of our students';
 
         Object.keys(fields)
-          .sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()))
+          .sort()
           .forEach(field => {
             const students = fields[field];
             output += `\nNumber of students in ${field}: ${students.length}. List: ${students.join(', ')}`;
