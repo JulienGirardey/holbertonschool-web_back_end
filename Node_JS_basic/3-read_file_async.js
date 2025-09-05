@@ -14,7 +14,7 @@ async function countStudents(path) {
       validStudents.forEach((line) => {
         const parts = line.split(',');
         const firstname = parts[0].trim();
-        const field = parts[parts.length - 1].trim();
+        const field = parts[3].trim();
         if (!fields[field]) {
           fields[field] = [];
         }
