@@ -15,7 +15,7 @@ export default class StudentsController {
             output += `Number of students in ${field}: ${students.length}. List: ${students.join(', ')}\n`;
           });
 
-        response.status(200).send(output.trim());
+        response.status(200).send(output.trim() + '\n');
       })
       .catch(() => {
         response.status(500).send('Cannot load the database');
@@ -35,7 +35,7 @@ export default class StudentsController {
       .then((fields) => {
         const students = fields[major] || [];
 
-        response.status(200).send(`List: ${students.join(', ')}`);
+        response.status(200).send(`List: ${students.join(', ')}\n`);
       })
       .catch(() => {
         response.status(500).send('Cannot load the database');
