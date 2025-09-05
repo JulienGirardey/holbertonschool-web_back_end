@@ -6,16 +6,16 @@ export default class StudentsController {
 
     readDatabase(dbPath)
       .then((fields) => {
-        let output = 'This is the list of our students\n';
+        let output = 'This is the list of our students';
 
         Object.keys(fields)
           .sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()))
           .forEach(field => {
             const students = fields[field];
-            output += `Number of students in ${field}: ${students.length}. List: ${students.join(', ')}\n`;
+            output += `\nNumber of students in ${field}: ${students.length}. List: ${students.join(', ')}`;
           });
 
-        response.status(200).send(output.trim());
+        response.status(200).send(output);
       })
       .catch(() => {
         response.status(500).send('Cannot load the database');
