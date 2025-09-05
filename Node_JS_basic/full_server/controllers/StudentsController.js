@@ -1,4 +1,4 @@
-import readDatabase from '../utils.js';
+import readDatabase from '../utils';
 
 export default class StudentsController {
   static getAllStudents(request, response) {
@@ -8,7 +8,7 @@ export default class StudentsController {
       .then((fields) => {
         let output = 'This is the list of our students';
         
-        Object.keys(fields).sort().forEach(field => {
+        Object.keys(fields).sort().forEach((field) => {
           const students = fields[field];
           output += `\nNumber of students in ${field}: ${students.length}. List: ${students.join(', ')}`;
         });
