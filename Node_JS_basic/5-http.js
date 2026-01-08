@@ -20,7 +20,7 @@ const app = http.createServer(async (request, response) => {
       .then(() => {
         console.log = originalLog;
 
-        response.write(logs);
+        response.write(logs.trim());
         response.end();
       })
       .catch(() => {
