@@ -10,17 +10,17 @@ const app = http.createServer(async (request, response) => {
     response.end('Hello Holberton School!');
   } else if (url === '/students') {
     const dbName = process.argv[2] || '';
-    let logs = '';
+    let logs = [];
     response.write('This is the list of our students\n');
     const originalLog = console.log;
-    const message = (msg) => { logs += `${msg}\n`; };
+    const message = (msg) => { logs.push(`${msg}`); };
     console.log = message;
-
+    
     countStudents(dbName)
       .then(() => {
         console.log = originalLog;
 
-        response.write(logs);
+        response.write(logs.join('\n'));
         response.end();
       })
       .catch(() => {
