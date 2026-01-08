@@ -1,36 +1,45 @@
 const http = require('http');
 const countStudents = require('./3-read_file_async');
 
-const app = http.createServer(async (request, response) => {
-  const { url } = request;
+const app = http.createServer((req, res) => {
+  res.writeHead(200, { 'Content-Type': 'text/plain' });
 
-  response.writeHead(200, { 'Content-Type': 'text/plain' });
+  if (req.url === '/') {
+    res.end('Hello Holberton School!');
+  } else if (req.url === '/students') {
+    const databasePath = process.argv[2];
 
-  if (url === '/') {
-    response.end('Hello Holberton School!');
-  } else if (url === '/students') {
-    const dbName = process.argv[2] || '';
-    let logs = '';
-    response.write('This is the list of our students\n');
+    // Commence la réponse
+    res.write('This is the list of our students\n');
+
+    // Sauvegarder console.log
     const originalLog = console.log;
-    const message = (msg) => { logs += `${msg}\n`; };
-    console.log = message;
+    let capturedOutput = '';
 
-    countStudents(dbName)
+    // Remplace console.log pour capturer
+    console.log = (message) => {
+      capturedOutput += `${message}\n`;
+    };
+
+    // Appel countStudents (qui va faire ses consoles.log)
+    countStudents(databasePath)
       .then(() => {
+        // Restaure le console.log original
         console.log = originalLog;
 
-        response.write(logs.trim());
-        response.end();
+        // On envoie ce qu'on a capturer au client HTTP
+        res.write(capturedOutput);
+        res.end();
       })
       .catch(() => {
+        // Restaure console.log en cas d'erreur aussi
         console.log = originalLog;
 
-        response.write('Cannot load the database');
-        response.end();
+        res.write('Cannot load the database');
+        res.end();
       });
   } else {
-    response.end('Hello Holberton School!');
+    res.end('Hello Holberton School!');
   }
 });
 
