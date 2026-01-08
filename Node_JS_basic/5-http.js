@@ -45,8 +45,4 @@ const app = http.createServer((req, res) => {
 
 app.listen(1245);
 
-if (require.main === module) {
-  app.listen(PORT);
-}
-
 module.exports = app;
