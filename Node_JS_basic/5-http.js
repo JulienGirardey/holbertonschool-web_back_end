@@ -13,7 +13,8 @@ const app = http.createServer(async (request, response) => {
     let logs = '';
     response.write('This is the list of our students\n');
     const originalLog = console.log;
-    console.log = (msg) => { logs += `${msg}\n`; };
+    const message = (msg) => { logs += `${msg}\n`; };
+    console.log = message;
 
     countStudents(dbName)
       .then(() => {
